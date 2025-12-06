@@ -40,9 +40,11 @@ exports.applyLeave = async (req, res) => {
 };
 
 
+// GET LOGGED-IN USER LEAVES
 exports.getMyLeaves = async (req, res) => {
     try {
-        const leaves = await Leave.find({ user: req.user.id }).sort({ createdAt: -1 });
+        const leaves = await Leave.find({ user: req.user.id })
+            .sort({ createdAt: -1 });
 
         res.json(leaves);
 
@@ -52,6 +54,7 @@ exports.getMyLeaves = async (req, res) => {
 };
 
 
+// GET ALL PENDING LEAVES (ADMIN)
 exports.getPendingLeaves = async (req, res) => {
     try {
         const leaves = await Leave.find({ status: "pending" })
@@ -65,9 +68,11 @@ exports.getPendingLeaves = async (req, res) => {
 };
 
 
+// APPROVE LEAVE
 exports.approveLeave = async (req, res) => {
     try {
-        const leave = await Leave.findById(req.params.id);
+        const leave = await Leave.findById(req.params.id)
+            .populate("user", "name email");
 
         if (!leave) return res.status(404).json({ message: "Leave not found" });
 
@@ -82,9 +87,11 @@ exports.approveLeave = async (req, res) => {
 };
 
 
+// REJECT LEAVE
 exports.rejectLeave = async (req, res) => {
     try {
-        const leave = await Leave.findById(req.params.id);
+        const leave = await Leave.findById(req.params.id)
+            .populate("user", "name email");
 
         if (!leave) return res.status(404).json({ message: "Leave not found" });
 
