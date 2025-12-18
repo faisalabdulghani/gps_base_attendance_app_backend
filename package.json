@@ -2,7 +2,9 @@
   "name": "gps-attendance-app-backend",
   "version": "1.0.0",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "node server.js",
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -12,6 +14,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
+    "moment-timezone": "^0.6.0",
     "mongoose": "^9.0.0",
     "node-cron": "^4.2.1"
   }
