@@ -18,6 +18,8 @@ app.use("/api/auth", require("./src/routes/authRoutes"));
 app.use("/api/users", require("./src/routes/userRoutes"));
 app.use("/api/attendance", require("./src/routes/attendanceRoutes"));
 app.use("/api/leave", require("./src/routes/leaveRoutes"));
+app.use("/api/reports", require("./src/routes/reportRoutes"));
+
 
 // Import cron jobs
 const { startAutoMarkAbsentJob } = require("./src/cron/autoMarkAbsent");
